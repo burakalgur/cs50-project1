@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %} 
+
+    {{title}} 
+
+{% endblock %} 
+
+{% block body %}
+
+    {% if entry %} 
+        
+        {{ entry|safe }} 
+
+        <button>
+            <a href="{% url 'encyclopedia:edit' title=title %}">
+                Edit this page
+            </a>
+        </button>
+    
+    {% else %}
+
+    <h3 style="margin: 10px; color: crimson">page not found</h3>
+
+    {% endif %} 
+
+{% endblock %} 

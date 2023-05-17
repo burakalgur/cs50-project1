@@ -1,0 +1,46 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %} 
+
+    Edit
+
+{% endblock %} 
+
+{% block body %}
+
+
+    {% if err %}
+    
+
+    <h3>{{ err }}</h3>
+
+    {% else %}
+    
+    <h1>Edit Page</h1>
+
+    <h4>{{ title }}</h4>
+
+    <form action="{% url 'encyclopedia:edit' title=title %}" method="post" style="width: 50%; max-height:100px;">
+        {% csrf_token %}
+
+            {{ form.title.label_tag }}
+            <br/>
+            {{ form.title }}
+            <br/>
+            <br/>
+            {{ form.content.label_tag }}
+            <br/>
+            {{ form.content }}
+
+            <br/>
+            <br/>
+
+        <input type="submit" />
+    </form>
+    
+    {% endif %}
+
+
+
+
+{% endblock %} 

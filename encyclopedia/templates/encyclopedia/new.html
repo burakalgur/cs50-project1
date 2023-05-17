@@ -1,0 +1,44 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %} 
+
+    New
+
+{% endblock %} 
+
+{% block body %}
+
+
+    {% if err %}
+    
+
+    <h3>{{ err }}</h3>
+
+    {% else %}
+    
+    <h1>New Page</h1>
+
+    <form action="{% url 'encyclopedia:new' %}" method="post" style="width: 50%; max-height:100px;">
+        {% csrf_token %}
+
+            {{ form.title.label_tag }}
+            <br/>
+            {{ form.title }}
+            <br/>
+            <br/>
+            {{ form.content.label_tag }}
+            <br/>
+            {{ form.content }}
+
+            <br/>
+            <br/>
+
+        <input type="submit" />
+    </form>
+    
+    {% endif %}
+
+
+
+
+{% endblock %} 
